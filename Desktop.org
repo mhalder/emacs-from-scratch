@@ -229,7 +229,7 @@ sudo ln -f ~/.emacs.d/exwm/EXWM.desktop /usr/share/xsessions/EXWM.desktop
   [Desktop Entry]
   Name=EXWM
   Comment=Emacs Window Manager
-  Exec=sh /home/daviwil/.emacs.d/exwm/start-exwm.sh
+  Exec=sh /home/halderm/.emacs.d/exwm/start-exwm.sh
   TryExec=sh
   Type=Application
   X-LightDM-DesktopName=exwm

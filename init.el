@@ -8,6 +8,11 @@
 ;; Make frame transparency overridable
 (defvar efs/frame-transparency '(90 . 90))
 
+;; Set the default shell to zsh
+(setq explicit-shell-file-name "/usr/bin/zsh")
+(setq shell-file-name "zsh")
+(setenv "SHELL" shell-file-name)
+
 ;; Initialize package sources
 (require 'package)
 
@@ -128,6 +133,15 @@
   :config
   (setq which-key-idle-delay 1))
 
+(use-package counsel
+  :bind (("C-M-j" . 'counsel-switch-buffer)
+         :map minibuffer-local-map
+         ("C-r" . 'counsel-minibuffer-history))
+  :custom
+  (counsel-linux-app-format-function #'counsel-linux-app-format-function-name-only)
+  :config
+  (counsel-mode 1))
+
 (use-package ivy
   :diminish
   :bind (("C-s" . swiper)
@@ -149,15 +163,6 @@
 (use-package ivy-rich
   :init
   (ivy-rich-mode 1))
-
-(use-package counsel
-  :bind (("C-M-j" . 'counsel-switch-buffer)
-         :map minibuffer-local-map
-         ("C-r" . 'counsel-minibuffer-history))
-  :custom
-  (counsel-linux-app-format-function #'counsel-linux-app-format-function-name-only)
-  :config
-  (counsel-mode 1))
 
 (use-package ivy-prescient
   :after counsel
@@ -365,9 +370,6 @@
     (python . t)))
 
 (push '("conf-unix" . conf-unix) org-src-lang-modes)
-
-;; This is needed as of Org 9.2
-(require 'org-tempo)
 
 (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
 (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))

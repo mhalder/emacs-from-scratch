@@ -23,6 +23,17 @@ The following variables are used to tweak some of the configuration pieces for u
 
 #+end_src
 
+* My customizations
+
+#+begin_src emacs-lisp
+
+  ;; Set the default shell to zsh
+  (setq explicit-shell-file-name "/usr/bin/zsh")
+  (setq shell-file-name "zsh")
+  (setenv "SHELL" shell-file-name)
+
+#+end_src
+
 * Tips for Use
 
 In this document I've added links in many places that lead you to documentation for the various packages we use.  If you're looking at this file in Emacs, you can put your cursor on a link and press =C-c C-o= or run =M-x org-open-at-point= to open the link in your web browser.
